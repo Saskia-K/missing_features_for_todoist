@@ -7,19 +7,3 @@ services:
     restart: always
     volumes:
       - .:/app_dev
-
-    networks:
-      - traefik_default
-     # The traefik labels only work with traefik container. this has to be setup on its own
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.todoist-webhook.rule=Host(`todoisthook.example.com`)"
-      - "traefik.http.routers.todoist-webhook.entrypoints=secureweb"
-      - "traefik.http.services.todoist-webhook.loadbalancer.server.port=8800"
-
-      - "traefik.http.routers.todoist-webhook.tls=true"
-      - "traefik.http.routers.todoist-webhook.tls.certresolver=myresolver"
-
-networks:
-  traefik_default:
-    external: true
