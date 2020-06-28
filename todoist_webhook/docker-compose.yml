@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+  todoist-webhook:
+    image: todoist_webhook_container
+    container_name: "todoist-webhook"
+    restart: always
+    volumes:
+      - .:/app_dev
